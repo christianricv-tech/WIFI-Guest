@@ -139,6 +139,7 @@
     }
     .submit:hover { transform:translateY(-1px); box-shadow:0 10px 20px rgba(0,101,183,.28); filter:brightness(1.04); }
     .submit:active { transform:translateY(0); }
+    .submit[disabled] { opacity:.7; cursor:progress; }
     .message {
       display:none; margin-top:15px; padding:10px 12px; border-radius:8px;
       font-size:12px; line-height:1.5; text-align:center;
@@ -174,7 +175,8 @@
     <div class="blob left"></div><div class="blob right"></div>
     <div class="orb one"></div><div class="orb two"></div><div class="orb three"></div>
     <div class="orb four"></div><div class="orb five"></div>
-    <div class="stripe left"></div><div class="stripe right"></div><div class="spark">✳</div>
+    <div class="stripe left"></div><div class="stripe right"></div>
+    <div class="spark">✳</div>
   </div>
 
   <main class="page">
@@ -202,24 +204,82 @@
   </main>
 
   <script>
-    // UI demo only: connect this form to a secure authentication service before production.
-    // Never place real voucher lists, passwords, or secret API keys in GitHub Pages JavaScript.
-    const form = document.getElementById('voucher-form');
-    const voucher = document.getElementById('voucher');
-    const message = document.getElementById('message');
-    document.getElementById('year').textContent = new Date().getFullYear();
+    /*
+     * Aruba InstantOS 8.11 external captive portal integration.
+     *
+     * The AP redirects the guest here and appends query parameters
+     * (mac, essid, ip, apname, apmac, url, switchip). On submit we hand the
+     * voucher off to the AP's authentication endpoint using the exact form
+     * fields the Aruba controller expects:
+     *
+     *     cmd=authenticate  user=<code>  password=<code>
+     *
+     * The controller turns that into a RADIUS Access-Request (User-Name and
+     * User-Password both equal the code), which FreeRADIUS validates against
+     * the voucher backend. A voucher is never validated by this page itself,
+     * so no secrets or API keys live in GitHub Pages.
+     *
+     * Requirement 9.2: post to https://securelogin.arubanetworks.com/swarm.cgi
+     * or, when the AP supplies it, to the switchip value.
+     */
+    (function () {
+      var form = document.getElementById('voucher-form');
+      var voucher = document.getElementById('voucher');
+      var message = document.getElementById('message');
+      var submit = form.querySelector('.submit');
 
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      const code = voucher.value.trim();
-      message.className = 'message show info';
-      if (!code) {
-        message.className = 'message show error';
-        message.textContent = 'Please enter your voucher code.';
-        return;
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      var params = new URLSearchParams(window.location.search);
+      var switchip = params.get('switchip');
+      var action = switchip
+        ? 'https://' + switchip + '/swarm.cgi'
+        : 'https://securelogin.arubanetworks.com/swarm.cgi';
+
+      function show(text, kind) {
+        message.textContent = text;
+        message.className = 'message show ' + (kind || 'info');
       }
-      message.textContent = 'Voucher page design is ready, but authentication is not connected yet. Configure the Aruba captive portal authentication service before using this page for internet access.';
-    });
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        var code = voucher.value.trim();
+        if (!code) {
+          show('Please enter your voucher code.', 'error');
+          voucher.focus();
+          return;
+        }
+
+        show('Connecting…', 'info');
+        submit.disabled = true;
+
+        var fields = { cmd: 'authenticate', user: code, password: code };
+
+        // Pass the AP's redirect parameters through so the controller can
+        // correlate the request with this client session.
+        params.forEach(function (value, key) {
+          if (!(key in fields)) {
+            fields[key] = value;
+          }
+        });
+
+        var post = document.createElement('form');
+        post.method = 'POST';
+        post.action = action;
+
+        Object.keys(fields).forEach(function (key) {
+          var input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = fields[key];
+          post.appendChild(input);
+        });
+
+        document.body.appendChild(post);
+        post.submit();
+      });
+    })();
   </script>
 </body>
 </html>
