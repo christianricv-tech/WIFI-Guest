@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — Aruba Voucher Admin{% endblock %}
+{% block content %}
+  <h1>Vouchers</h1>
+
+  <form class="filters" method="get" action="/admin/dashboard">
+    <label>Status
+      <select name="status">
+        <option value="" {% if not status %}selected{% endif %}>All</option>
+        <option value="unused" {% if status == "unused" %}selected{% endif %}>Unused</option>
+        <option value="consumed" {% if status == "consumed" %}selected{% endif %}>Consumed</option>
+        <option value="revoked" {% if status == "revoked" %}selected{% endif %}>Revoked</option>
+        <option value="expired" {% if status == "expired" %}selected{% endif %}>Expired</option>
+      </select>
+    </label>
+    <button class="primary" type="submit">Filter</button>
+    <span>{{ total }} total</span>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Code</th><th>Status</th><th>Mode</th><th>Duration (min)</th>
+        <th>Expires</th><th>Created</th><th>Consumed</th><th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for v in items %}
+      <tr>
+        <td>{{ v.code }}</td>
+        <td><span class="tag {{ v.status }}">{{ v.status }}</span></td>
+        <td>{{ v.activation_mode }}</td>
+        <td>{{ v.duration_minutes }}</td>
+        <td>{{ v.expires_at or "—" }}</td>
+        <td>{{ v.created_at or "—" }}</td>
+        <td>{{ v.consumed_at or "—" }}</td>
+        <td>
+          {% if v.status == "unused" %}
+          <form class="inline" method="post" action="/admin/vouchers/{{ v.code }}/revoke">
+            <button type="submit">Revoke</button>
+          </form>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+      {% if not items %}
+      <tr><td colspan="8">No vouchers found.</td></tr>
+      {% endif %}
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    {% if page > 1 %}
+      <a href="/admin/dashboard?page={{ page - 1 }}{% if status %}&status={{ status }}{% endif %}">&laquo; Prev</a>
+    {% endif %}
+    <span>Page {{ page }} of {{ total_pages }}</span>
+    {% if page < total_pages %}
+      <a href="/admin/dashboard?page={{ page + 1 }}{% if status %}&status={{ status }}{% endif %}">Next &raquo;</a>
+    {% endif %}
+  </div>
+{% endblock %}

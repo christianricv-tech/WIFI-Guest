@@ -1,0 +1,58 @@
+# ============================================================
+# freeradius/mods-available/rest — rlm_rest module configuration
+#
+# TEMPLATE. Copy to /etc/freeradius/3.0/mods-available/rest and enable:
+#   ln -s /etc/freeradius/3.0/mods-available/rest \
+#         /etc/freeradius/3.0/mods-enabled/rest
+#
+# This module makes FreeRADIUS call the FastAPI Voucher_API over HTTP to
+# validate voucher codes (authorize) and to record consumption (post-auth).
+#
+# Requirements: 10.1, 10.2, 2.7
+# ============================================================
+
+rest {
+    # Base URL of the Voucher_API. Adjust host/port if the API is not local.
+    connect_uri = "http://127.0.0.1:8000"
+    connect_timeout = 5.0
+
+    # --------------------------------------------------------
+    # authorize — called from the "authorize" section of the
+    # virtual server. The API always returns HTTP 200; the JSON
+    # body's "result" field drives the outcome via the site policy.
+    # --------------------------------------------------------
+    authorize {
+        uri = "${..connect_uri}/radius/validate"
+        method = "post"
+        body = "json"
+        data = '{"username": "%{User-Name}", "password": "%{User-Password}", "client_mac": "%{Calling-Station-Id}"}'
+        timeout = 5.0
+        force_to = "json"
+    }
+
+    # --------------------------------------------------------
+    # post-auth — only used on the rlm_sql path, to mark the
+    # voucher consumed after FreeRADIUS has granted access.
+    # --------------------------------------------------------
+    post-auth {
+        uri = "${..connect_uri}/radius/post-auth"
+        method = "post"
+        body = "json"
+        data = '{"username": "%{User-Name}", "client_mac": "%{Calling-Station-Id}"}'
+        timeout = 5.0
+    }
+
+    # --------------------------------------------------------
+    # Connection pool
+    # --------------------------------------------------------
+    pool {
+        start = 5
+        min = 4
+        max = 10
+        spare = 3
+        uses = 0
+        retry_delay = 30
+        lifetime = 0
+        idle_timeout = 60
+    }
+}

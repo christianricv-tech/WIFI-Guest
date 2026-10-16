@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}New Voucher — Aruba Voucher Admin{% endblock %}
+{% block content %}
+  <h1>Generate Vouchers</h1>
+
+  {% if error %}<div class="error">{{ error }}</div>{% endif %}
+
+  <form class="filters" method="post" action="/admin/vouchers/new">
+    <label>Quantity (1–500)
+      <input type="number" name="quantity" min="1" max="500" value="1" required>
+    </label>
+    <label>Preset duration
+      <select name="duration_preset">
+        <option value="">— none —</option>
+        {% for p in presets %}<option value="{{ p }}">{{ p }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>Custom duration (minutes)
+      <input type="number" name="duration_minutes" min="1" max="43200" placeholder="e.g. 480">
+    </label>
+    <label>Activation mode
+      <select name="activation_mode">
+        <option value="use-activated">use-activated</option>
+        <option value="pre-activated">pre-activated</option>
+      </select>
+    </label>
+    <button class="primary" type="submit">Generate</button>
+  </form>
+
+  {% if codes %}
+  <div class="notice">Generated {{ codes | length }} voucher(s).</div>
+  <p>Select all and copy, or download as a text file.</p>
+  <textarea readonly onclick="this.select()">{{ codes | join('\n') }}</textarea>
+  <p>
+    <button class="primary" type="button" onclick="navigator.clipboard.writeText(document.querySelector('textarea').value)">Copy to clipboard</button>
+    <a href="/admin/vouchers/download?codes={{ codes | join(',') }}">Download as .txt</a>
+  </p>
+  {% endif %}
+{% endblock %}

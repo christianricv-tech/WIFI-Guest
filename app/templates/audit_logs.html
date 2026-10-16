@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Audit Logs — Aruba Voucher Admin{% endblock %}
+{% block content %}
+  <h1>Audit Logs</h1>
+
+  <form class="filters" method="get" action="/admin/audit-logs/view">
+    <label>Voucher code
+      <input type="text" name="voucher_code" value="{{ voucher_code }}">
+    </label>
+    <label>Client MAC
+      <input type="text" name="client_mac" value="{{ client_mac }}">
+    </label>
+    <label>Outcome
+      <select name="outcome">
+        <option value="">All</option>
+        <option value="accepted" {% if outcome == "accepted" %}selected{% endif %}>accepted</option>
+        <option value="rejected" {% if outcome == "rejected" %}selected{% endif %}>rejected</option>
+      </select>
+    </label>
+    <label>From (UTC)
+      <input type="date" name="date_from" value="{{ date_from }}">
+    </label>
+    <label>To (UTC)
+      <input type="date" name="date_to" value="{{ date_to }}">
+    </label>
+    <button class="primary" type="submit">Filter</button>
+    <span>{{ total }} total</span>
+  </form>
+
+  <table>
+    <thead>
+      <tr><th>Timestamp (UTC)</th><th>Code</th><th>MAC</th><th>Outcome</th><th>Reason</th><th>Source</th></tr>
+    </thead>
+    <tbody>
+      {% for e in items %}
+      <tr>
+        <td>{{ e.logged_at }}</td>
+        <td>{{ e.voucher_code }}</td>
+        <td>{{ e.client_mac or "—" }}</td>
+        <td>{{ e.outcome }}</td>
+        <td>{{ e.rejection_reason or "—" }}</td>
+        <td>{{ e.source }}</td>
+      </tr>
+      {% endfor %}
+      {% if not items %}
+      <tr><td colspan="6">No audit log entries found.</td></tr>
+      {% endif %}
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    {% if page > 1 %}
+      <a href="/admin/audit-logs/view?page={{ page - 1 }}&voucher_code={{ voucher_code }}&client_mac={{ client_mac }}&outcome={{ outcome }}&date_from={{ date_from }}&date_to={{ date_to }}">&laquo; Prev</a>
+    {% endif %}
+    <span>Page {{ page }} of {{ total_pages }}</span>
+    {% if page < total_pages %}
+      <a href="/admin/audit-logs/view?page={{ page + 1 }}&voucher_code={{ voucher_code }}&client_mac={{ client_mac }}&outcome={{ outcome }}&date_from={{ date_from }}&date_to={{ date_to }}">Next &raquo;</a>
+    {% endif %}
+  </div>
+{% endblock %}

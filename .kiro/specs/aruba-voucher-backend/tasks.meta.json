@@ -1,0 +1,794 @@
+{
+  "pbtResults": {
+    "P1": { "task": "4.2", "property": "Property 1: Voucher code character set", "file": "tests/property/test_voucher_code_properties.py", "function": "test_voucher_code_character_set", "status": "passed", "ranAt": 1792114852201 },
+    "P2": { "task": "4.4", "property": "Property 2: Batch quantity boundary", "file": "tests/property/test_voucher_code_properties.py", "function": "test_batch_quantity_boundary", "status": "passed", "ranAt": 1792114852201 },
+    "P3": { "task": "4.5", "property": "Property 3: Custom duration boundary", "file": "tests/property/test_voucher_code_properties.py", "function": "test_custom_duration_boundary", "status": "passed", "ranAt": 1792114852201 },
+    "P4": { "task": "4.6", "property": "Property 4: Generated vouchers start unused", "file": "tests/property/test_voucher_code_properties.py", "function": "test_generated_vouchers_start_unused", "status": "passed", "ranAt": 1792114852201 },
+    "P5": { "task": "4.7", "property": "Property 5: Invalid activation mode rejected", "file": "tests/property/test_voucher_code_properties.py", "function": "test_invalid_activation_mode_rejected", "status": "passed", "ranAt": 1792114852201 },
+    "P6": { "task": "7.2", "property": "Property 6: Valid voucher always accepted", "file": "tests/property/test_validation_properties.py", "function": "test_valid_voucher_always_accepted", "status": "passed", "ranAt": 1792114852201 },
+    "P7": { "task": "7.3", "property": "Property 7: Non-existent code always rejected", "file": "tests/property/test_validation_properties.py", "function": "test_nonexistent_code_rejected", "status": "passed", "ranAt": 1792114852201 },
+    "P8": { "task": "7.4", "property": "Property 8: Invalid-state voucher always rejected", "file": "tests/property/test_validation_properties.py", "function": "test_invalid_state_voucher_rejected", "status": "passed", "ranAt": 1792114852201 },
+    "P9": { "task": "4.9", "property": "Property 9: Pre-activated expiry correctness", "file": "tests/property/test_expiry_properties.py", "function": "test_pre_activated_expiry_correctness", "status": "passed", "ranAt": 1792114852201 },
+    "P10": { "task": "4.10", "property": "Property 10: Use-activated expiry correctness", "file": "tests/property/test_expiry_properties.py", "function": "test_use_activated_expiry_correctness", "status": "passed", "ranAt": 1792114852201 },
+    "P11": { "task": "4.11", "property": "Property 11: Use-activated voucher not pre-expired", "file": "tests/property/test_expiry_properties.py", "function": "test_use_activated_voucher_not_pre_expired", "status": "passed", "ranAt": 1792114852201 },
+    "P12": { "task": "7.5", "property": "Property 12: Successful validation sets consumed state", "file": "tests/property/test_validation_properties.py", "function": "test_successful_validation_sets_consumed_state", "status": "passed", "ranAt": 1792114852201 },
+    "P13": { "task": "7.6", "property": "Property 13: Concurrent validation atomicity", "file": "tests/property/test_concurrency_properties.py", "function": "test_concurrent_validation_atomicity", "status": "passed", "ranAt": 1792114852201 },
+    "P14": { "task": "9.6", "property": "Property 14: Revocation sets revoked state", "file": "tests/property/test_validation_properties.py", "function": "test_revocation_sets_revoked_state", "status": "passed", "ranAt": 1792114852201 },
+    "P15": { "task": "9.5", "property": "Property 15: Paginated voucher list completeness", "file": "tests/property/test_voucher_code_properties.py", "function": "test_paginated_voucher_list_completeness", "status": "passed", "ranAt": 1792114852201 },
+    "P16": { "task": "10.2", "property": "Property 16: Audit log written for every validation", "file": "tests/property/test_validation_properties.py", "function": "test_audit_log_written_for_every_validation", "status": "passed", "ranAt": 1792114852201 },
+    "P17": { "task": "10.3", "property": "Property 17: Audit log filter correctness", "file": "tests/property/test_validation_properties.py", "function": "test_audit_log_filter_correctness", "status": "passed", "ranAt": 1792114852201 },
+    "P18": { "task": "5.3", "property": "Property 18: Admin password always bcrypt-hashed", "file": "tests/property/test_auth_properties.py", "function": "test_admin_password_always_bcrypt_hashed", "status": "passed", "ranAt": 1792114852201 },
+    "P19": { "task": "12.3", "property": "Property 19: Input validation returns field-level errors", "file": "tests/property/test_voucher_code_properties.py", "function": "test_input_validation_returns_field_level_errors", "status": "passed", "ranAt": 1792114852201 },
+    "P20": { "task": "12.2", "property": "Property 20: Rate limit enforcement", "file": "tests/property/test_validation_properties.py", "function": "test_rate_limit_enforcement", "status": "passed", "ranAt": 1792114852201 },
+    "P21": { "task": "1.3", "property": "Property 21: Missing environment variables cause startup failure", "file": "tests/property/test_config_properties.py", "function": "test_missing_env_vars_cause_startup_failure", "status": "passed", "ranAt": 1792114852201 }
+  },
+  "executionHistory": {
+    "1.1 Create project directory structure and `requirements.txt`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043873274
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043887397
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792044420459
+      }
+    ],
+    "1.2 Implement `app/config.py` — environment variable loading with startup validation": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043874395
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043890435
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792044426108
+      }
+    ],
+    "1.4 Implement `app/database.py` — async SQLAlchemy engine and session factory": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043874557
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792044432725
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792044949649
+      }
+    ],
+    "2.1 Implement `app/models/admin.py` — `admins` table SQLAlchemy model": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043874731
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792044435855
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792044953104
+      }
+    ],
+    "2.2 Implement `app/models/voucher.py` — `vouchers` table SQLAlchemy model": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043874840
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792044439161
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792044956495
+      }
+    ],
+    "2.3 Implement `app/models/audit_log.py` — `audit_logs` table SQLAlchemy model": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043874935
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792044442457
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792044959995
+      }
+    ],
+    "2.4 Write Alembic migration `001_create_admins.py`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043875085
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792044970797
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792045394175
+      }
+    ],
+    "2.5 Write Alembic migration `002_create_vouchers.py`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043875202
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792044974130
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792045398080
+      }
+    ],
+    "2.6 Write Alembic migration `003_create_audit_logs.py`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043875336
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792044977592
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792045403796
+      }
+    ],
+    "2.7 Write Alembic migration `004_create_radius_view.py`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043875435
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792044980914
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792045709548
+      }
+    ],
+    "2.8 Configure `alembic/env.py` to use the async SQLAlchemy engine": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043875525
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792044984145
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792045713249
+      }
+    ],
+    "3. Checkpoint — verify project scaffolding and models": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043875608
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792045717593
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792045845969
+      }
+    ],
+    "4.1 Implement `app/services/voucher_service.py` — `generate_voucher_code()` function": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043875704
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792045849799
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048120840
+      },
+      {
+        "executionId": "f5d34958-255a-4576-a33f-2e05a3738482",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048163945
+      }
+    ],
+    "4.3 Implement `generate_vouchers_batch()` in `voucher_service.py` — batch generation with collision retry": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043875778
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792045854059
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048121127
+      },
+      {
+        "executionId": "f5d34958-255a-4576-a33f-2e05a3738482",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048168217
+      }
+    ],
+    "4.8 Implement expiry logic helpers in `voucher_service.py`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043875883
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792045857764
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048121299
+      },
+      {
+        "executionId": "f5d34958-255a-4576-a33f-2e05a3738482",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048171831
+      }
+    ],
+    "5.1 Implement `app/services/auth_service.py` — password hashing and JWT operations": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043875965
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792045861532
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048121484
+      },
+      {
+        "executionId": "f5d34958-255a-4576-a33f-2e05a3738482",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048175637
+      }
+    ],
+    "5.2 Implement in-memory JTI blocklist and idle-timeout tracker in `auth_service.py`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043876049
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048121719
+      },
+      {
+        "executionId": "f5d34958-255a-4576-a33f-2e05a3738482",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048186431
+      }
+    ],
+    "6.1 Implement `app/services/audit_service.py`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043876130
+      },
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792045865224
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048121871
+      }
+    ],
+    "7.1 Implement `app/routers/radius.py` — `POST /radius/validate`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043876213
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048122047
+      }
+    ],
+    "7.7 Implement `app/routers/radius.py` — `POST /radius/post-auth` (rlm_sql path)": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043876297
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048122311
+      }
+    ],
+    "8.1 Implement `app/routers/admin_auth.py` — `POST /admin/login`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043876392
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048122484
+      }
+    ],
+    "8.2 Implement `POST /admin/logout` in `admin_auth.py`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043876483
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048122672
+      }
+    ],
+    "8.3 Implement admin seeding logic in `app/main.py`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043876634
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048122925
+      }
+    ],
+    "9.1 Implement `app/routers/admin_vouchers.py` — `POST /admin/vouchers`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043876722
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048123087
+      }
+    ],
+    "9.2 Implement `GET /admin/vouchers` — paginated list with optional status filter": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043876807
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048123368
+      }
+    ],
+    "9.3 Implement `GET /admin/vouchers/{code}` — single voucher lookup": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043876881
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048123555
+      }
+    ],
+    "9.4 Implement `DELETE /admin/vouchers/{code}/revoke` — revocation endpoint": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043876972
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048123842
+      }
+    ],
+    "10.1 Implement `app/routers/admin_audit.py` — `GET /admin/audit-logs`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043877059
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048124031
+      }
+    ],
+    "11. Checkpoint — core API verified": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043877146
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048124265
+      }
+    ],
+    "12.1 Implement `app/main.py` — FastAPI application factory": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043877220
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048124489
+      }
+    ],
+    "13.1 Create `app/templates/base.html` — shared layout template": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043877307
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048124643
+      }
+    ],
+    "13.2 Create `app/templates/login.html` and `app/templates/dashboard.html`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043877383
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048124803
+      }
+    ],
+    "13.3 Create `app/templates/vouchers_new.html`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043877464
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048125007
+      }
+    ],
+    "13.4 Create `app/templates/audit_logs.html`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043877553
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048125156
+      }
+    ],
+    "13.5 Implement `app/routers/admin_ui.py` — HTML page routes": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043877628
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048125328
+      }
+    ],
+    "14.1 Write `freeradius/mods-available/rest` — rlm_rest module config": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043877709
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048125485
+      }
+    ],
+    "14.2 Write `freeradius/sites-available/voucher` — virtual server config": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043877795
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048125658
+      }
+    ],
+    "14.3 Write `freeradius/sql/postgresql.conf` — rlm_sql module config": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043877867
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048125899
+      }
+    ],
+    "14.4 Write `freeradius/clients.conf` — RADIUS client (AP) config template": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043877939
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048126068
+      }
+    ],
+    "15.1 Write `nginx/voucher.conf` — production nginx config": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043878038
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048126223
+      }
+    ],
+    "16.1 Write unit tests for voucher generation in `tests/unit/test_voucher_generation.py`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043878194
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048126451
+      }
+    ],
+    "16.2 Write unit tests for expiry logic in `tests/unit/test_expiry_logic.py`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043878282
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048126721
+      }
+    ],
+    "16.3 Write unit tests for auth in `tests/unit/test_auth.py`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043878353
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048126936
+      }
+    ],
+    "16.4 Write unit tests for input validation in `tests/unit/test_input_validation.py`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043878439
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048127117
+      }
+    ],
+    "17.1 Write integration test stubs in `tests/integration/test_radius_flow.py`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043878530
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048127259
+      }
+    ],
+    "17.2 Write integration test stubs in `tests/integration/test_admin_api.py`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043878619
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048127503
+      }
+    ],
+    "17.3 Write integration test stubs in `tests/integration/test_audit_log.py`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043878693
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048127675
+      }
+    ],
+    "18. Checkpoint — full test suite passes": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043878786
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048127872
+      }
+    ],
+    "19.1 Write `README.md` — Windows development setup (Steps 1–9)": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043878873
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048128065
+      }
+    ],
+    "19.2 Write Linux VPS production setup section in `README.md`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043878960
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048128211
+      }
+    ],
+    "19.3 Write FreeRADIUS configuration guide section in `README.md`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043879032
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048128401
+      }
+    ],
+    "19.4 Write walled garden configuration table in `README.md`": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043879121
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048128565
+      }
+    ],
+    "20. Final checkpoint — full system review": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792043879286
+      },
+      {
+        "executionId": "a0e691ef-8fdc-4560-ab2d-f153a0349ed4",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048128726
+      }
+    ],
+    "1. Project scaffolding — create the base Python package, configuration loading, and database session": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792044949807
+      }
+    ],
+    "2. Database models and Alembic migrations — define all tables and the RADIUS view": [
+      {
+        "executionId": "66a1b411-c816-4ea7-8630-c01c69bc4ea2",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792045713420
+      }
+    ],
+    "4. Voucher service — code generation, expiry logic, collision handling": [
+      {
+        "executionId": "f5d34958-255a-4576-a33f-2e05a3738482",
+        "chatSessionId": "sess_dffd077c-1cbf-44bb-8a92-fb76fed461a6",
+        "timestamp": 1792048172020
+      }
+    ]
+  }
+}

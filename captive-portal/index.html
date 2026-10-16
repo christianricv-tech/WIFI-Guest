@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eaf1f8">
+  <title>SPM | S.P. Madrid Guest Wi-Fi</title>
+  <style>
+    :root {
+      --navy: #103d68;
+      --blue: #0865b7;
+      --blue2: #168ed0;
+      --ink: #18334f;
+      --muted: #8193a8;
+      --line: #d6e0eb;
+      --card: rgba(255,255,255,.94);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px 18px;
+      overflow: hidden;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 50% 42%, rgba(255,255,255,.92) 0%, rgba(241,246,251,.9) 36%, rgba(224,234,245,.95) 100%);
+      position: relative;
+    }
+    .ambient {
+      position: fixed; inset: 0; overflow: hidden; pointer-events: none;
+      z-index: 0;
+    }
+    .blob {
+      position: absolute;
+      background: linear-gradient(145deg, #9fb2c9, #b8c7d9);
+      opacity: .82;
+      filter: blur(.2px);
+      animation: drift 13s ease-in-out infinite alternate;
+    }
+    .blob.left {
+      width: 330px; height: 560px; left: -160px; top: -90px;
+      border-radius: 48% 52% 63% 37% / 28% 35% 65% 72%;
+      transform: rotate(22deg);
+    }
+    .blob.left::after {
+      content: ""; position: absolute; width: 235px; height: 270px;
+      right: -62px; bottom: -230px; background: inherit;
+      border-radius: 56% 44% 38% 62% / 42% 58% 42% 58%;
+    }
+    .blob.right {
+      width: 300px; height: 480px; right: -135px; top: -85px;
+      border-radius: 55% 45% 32% 68% / 36% 31% 69% 64%;
+      animation-delay: -4s;
+    }
+    .blob.right::after {
+      content: ""; position: absolute; width: 220px; height: 250px;
+      left: -40px; bottom: -300px; background: inherit;
+      border-radius: 40% 60% 58% 42% / 58% 38% 62% 42%;
+    }
+    .orb {
+      position: absolute; border: 2px solid rgba(92,133,180,.36);
+      border-radius: 50%; animation: float 7s ease-in-out infinite;
+    }
+    .orb.one { width: 72px; height: 72px; left: 9%; top: 34%; }
+    .orb.two { width: 12px; height: 12px; left: 12%; top: 23%; background:#aabbd0; }
+    .orb.three { width: 15px; height: 15px; right: 10%; top: 34%; background:#9db1c8; animation-delay: -2s; }
+    .orb.four { width: 9px; height: 9px; right: 14%; bottom: 31%; background:#9db1c8; animation-delay: -3s; }
+    .orb.five { width: 44px; height: 44px; right: 9%; bottom: 19%; }
+    .stripe {
+      position: absolute; width: 95px; height: 95px; opacity: .6;
+      background: repeating-linear-gradient(135deg, transparent 0 8px, #a8bad0 8px 10px);
+      mask-image: radial-gradient(circle, #000 50%, transparent 72%);
+      animation: float 9s ease-in-out infinite alternate;
+    }
+    .stripe.left { top: 12%; left: 10%; }
+    .stripe.right { top: 18%; right: 7%; animation-delay: -3s; }
+    .spark {
+      position:absolute; right:8%; top:23%; color:rgba(255,255,255,.9);
+      font-size:38px; font-weight:200; animation: spin 20s linear infinite;
+    }
+    .page {
+      width: min(100%, 410px);
+      position: relative; z-index: 1;
+      animation: appear .8s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .brand {
+      display: flex; align-items: center; justify-content: center;
+      gap: 14px; margin: 0 auto 28px; color: var(--navy);
+      text-shadow: 0 7px 20px rgba(23,56,90,.12);
+      white-space: nowrap;
+    }
+    .brand-mark {
+      font-size: 43px; line-height: 1; letter-spacing: -3px; font-weight: 850;
+    }
+    .brand-mark .gold { color: #e7b840; }
+    .brand-divider { height: 58px; width: 2px; background: #5e7896; opacity: .8; }
+    .brand-name { font-size: 19px; letter-spacing: 6px; font-weight: 650; }
+    .card {
+      overflow: hidden; border-radius: 19px; background: var(--card);
+      box-shadow: 0 22px 48px rgba(31,53,76,.25), 0 3px 10px rgba(31,53,76,.08);
+      border: 1px solid rgba(255,255,255,.9);
+      backdrop-filter: blur(12px);
+    }
+    .card-head {
+      min-height: 70px; display: grid; place-items: center; text-align: center;
+      padding: 18px 20px; color: white; font-size: 13px; font-weight: 500;
+      background: linear-gradient(110deg, #0a62b4, #123d69);
+    }
+    .card-body { padding: 30px 29px 34px; }
+    .subtitle { text-align:center; font-size:12px; color:#71849b; margin: -10px 0 22px; }
+    .field {
+      position: relative; margin-bottom: 14px;
+    }
+    .field svg {
+      position:absolute; left:14px; top:50%; transform:translateY(-50%);
+      width:16px; height:16px; stroke:#91a0b2; fill:none; stroke-width:1.7;
+      pointer-events:none;
+    }
+    input {
+      width:100%; height:44px; border:1px solid #d5deea; border-radius:10px;
+      background:#f6f8fc; padding:0 14px 0 42px; outline:none;
+      font-size:13px; color:#20354c; transition: .2s ease;
+      box-shadow: inset 0 1px 2px rgba(15,40,70,.025);
+    }
+    input::placeholder { color:#a3adbb; }
+    input:focus {
+      border-color:#168bd0; background:#fff;
+      box-shadow:0 0 0 3px rgba(22,139,208,.12);
+    }
+    .submit {
+      width:100%; height:43px; margin-top:8px; border:0; border-radius:10px;
+      background:linear-gradient(105deg, #198fc9, #075bb4); color:white;
+      font-size:14px; font-weight:700; cursor:pointer;
+      box-shadow:0 7px 15px rgba(0,101,183,.25);
+      transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+    .submit:hover { transform:translateY(-1px); box-shadow:0 10px 20px rgba(0,101,183,.28); filter:brightness(1.04); }
+    .submit:active { transform:translateY(0); }
+    .submit[disabled] { opacity:.7; cursor:progress; }
+    .message {
+      display:none; margin-top:15px; padding:10px 12px; border-radius:8px;
+      font-size:12px; line-height:1.5; text-align:center;
+    }
+    .message.show { display:block; }
+    .message.info { color:#235b83; background:#eaf5ff; border:1px solid #c9e6fa; }
+    .message.error { color:#a43a3a; background:#fff0f0; border:1px solid #f4d0d0; }
+    .footer { margin-top:22px; text-align:center; color:#8193a8; font-size:11px; letter-spacing:.1px; }
+    .footer .sep { padding:0 8px; color:#a8b6c6; }
+    @keyframes drift { from { transform:translate3d(0,0,0) rotate(18deg); } to { transform:translate3d(18px,22px,0) rotate(26deg); } }
+    @keyframes float { 0%,100% { transform:translateY(0) rotate(0); } 50% { transform:translateY(-13px) rotate(7deg); } }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    @keyframes appear { from { opacity:0; transform:translateY(14px) scale(.985); } to { opacity:1; transform:translateY(0) scale(1); } }
+    @media (max-width:600px) {
+      body { padding:24px 18px; }
+      .brand { gap:10px; margin-bottom:24px; }
+      .brand-mark { font-size:35px; }
+      .brand-divider { height:46px; }
+      .brand-name { font-size:14px; letter-spacing:4px; }
+      .blob.left { left:-240px; }
+      .blob.right { right:-230px; }
+      .card-body { padding:26px 22px 30px; }
+      .stripe.left { left:0; }
+      .stripe.right { right:0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="blob left"></div><div class="blob right"></div>
+    <div class="orb one"></div><div class="orb two"></div><div class="orb three"></div>
+    <div class="orb four"></div><div class="orb five"></div>
+    <div class="stripe left"></div><div class="stripe right"></div>
+    <div class="spark">✳</div>
+  </div>
+
+  <main class="page">
+    <header class="brand" aria-label="SPM S.P. Madrid">
+      <div class="brand-mark">SPM<span class="gold">◆</span></div>
+      <div class="brand-divider"></div>
+      <div class="brand-name">S.P. MADRID</div>
+    </header>
+
+    <section class="card" aria-labelledby="portal-title">
+      <div class="card-head" id="portal-title">Sign in to access the internet</div>
+      <div class="card-body">
+        <p class="subtitle">Enter your guest Wi-Fi voucher code below.</p>
+        <form id="voucher-form" autocomplete="on">
+          <div class="field">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20v-1.5a7 7 0 0 1 14 0V20"></path></svg>
+            <input id="voucher" name="voucher" type="text" placeholder="Voucher code" autocomplete="username" autocapitalize="characters" spellcheck="false" required aria-label="Voucher code">
+          </div>
+          <button class="submit" type="submit">Connect to Wi-Fi</button>
+          <div id="message" class="message" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+    <footer class="footer">© <span id="year"></span><span class="sep">|</span> S.P. Madrid Guest Wi-Fi</footer>
+  </main>
+
+  <script>
+    /*
+     * Aruba InstantOS 8.11 external captive portal integration.
+     *
+     * The AP redirects the guest here and appends query parameters
+     * (mac, essid, ip, apname, apmac, url, switchip). On submit we hand the
+     * voucher off to the AP's authentication endpoint using the exact form
+     * fields the Aruba controller expects:
+     *
+     *     cmd=authenticate  user=<code>  password=<code>
+     *
+     * The controller turns that into a RADIUS Access-Request (User-Name and
+     * User-Password both equal the code), which FreeRADIUS validates against
+     * the voucher backend. A voucher is never validated by this page itself,
+     * so no secrets or API keys live in GitHub Pages.
+     *
+     * Requirement 9.2: post to https://securelogin.arubanetworks.com/swarm.cgi
+     * or, when the AP supplies it, to the switchip value.
+     */
+    (function () {
+      var form = document.getElementById('voucher-form');
+      var voucher = document.getElementById('voucher');
+      var message = document.getElementById('message');
+      var submit = form.querySelector('.submit');
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      var params = new URLSearchParams(window.location.search);
+      var switchip = params.get('switchip');
+      var action = switchip
+        ? 'https://' + switchip + '/swarm.cgi'
+        : 'https://securelogin.arubanetworks.com/swarm.cgi';
+
+      function show(text, kind) {
+        message.textContent = text;
+        message.className = 'message show ' + (kind || 'info');
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        var code = voucher.value.trim();
+        if (!code) {
+          show('Please enter your voucher code.', 'error');
+          voucher.focus();
+          return;
+        }
+
+        show('Connecting…', 'info');
+        submit.disabled = true;
+
+        var fields = { cmd: 'authenticate', user: code, password: code };
+
+        // Pass the AP's redirect parameters through so the controller can
+        // correlate the request with this client session.
+        params.forEach(function (value, key) {
+          if (!(key in fields)) {
+            fields[key] = value;
+          }
+        });
+
+        var post = document.createElement('form');
+        post.method = 'POST';
+        post.action = action;
+
+        Object.keys(fields).forEach(function (key) {
+          var input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = fields[key];
+          post.appendChild(input);
+        });
+
+        document.body.appendChild(post);
+        post.submit();
+      });
+    })();
+  </script>
+</body>
+</html>

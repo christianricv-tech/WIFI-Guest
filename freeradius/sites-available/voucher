@@ -1,0 +1,62 @@
+# ============================================================
+# freeradius/sites-available/voucher — virtual server (rlm_rest path)
+#
+# TEMPLATE. Copy to /etc/freeradius/3.0/sites-available/voucher and enable:
+#   ln -s /etc/freeradius/3.0/sites-available/voucher \
+#         /etc/freeradius/3.0/sites-enabled/voucher
+#
+# Requires the "rest" module to be enabled (see mods-available/rest).
+#
+# Design note: the Voucher_API /radius/validate endpoint ALWAYS returns
+# HTTP 200 with a JSON body whose "result" field is "accept" or "reject".
+# This is deliberate — rlm_rest maps non-2xx HTTP status codes to module
+# codes without processing the body, so returning 200 lets the "result"
+# field drive the decision here. Any 5xx/timeout/unreachable maps to
+# "fail" and is treated as reject (fail-closed) to prevent fail-open access.
+#
+# Requirements: 10.2, 2.7, 2.8
+# ============================================================
+
+server voucher {
+    listen {
+        type = auth
+        ipaddr = *
+        port = 1812
+    }
+
+    authorize {
+        # Call the Voucher_API to validate the voucher.
+        rest
+
+        # ok/updated  -> API accepted the voucher
+        # notfound/reject -> API rejected the voucher
+        # fail        -> API unreachable / 5xx / timeout -> fail-closed
+        if (ok || updated) {
+            update control {
+                Auth-Type := Accept
+            }
+        }
+        elsif (notfound || reject) {
+            reject
+        }
+        else {
+            # Backend unreachable or returned a server error — fail closed.
+            reject
+        }
+    }
+
+    authenticate {
+        Auth-Type Accept {
+            ok
+        }
+    }
+
+    # post-auth is only used on the rlm_sql path (see sql/postgresql.conf).
+    # On the rlm_rest path the voucher is already marked consumed inside the
+    # /radius/validate transaction, so this call is harmless but unnecessary.
+    post-auth {
+        if (ok || updated) {
+            rest.post-auth
+        }
+    }
+}

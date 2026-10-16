@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Login</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: #1f2a44; display: flex; min-height: 100vh; align-items: center; justify-content: center; margin: 0; }
+    .card { background: #fff; padding: 2rem; border-radius: 8px; width: 320px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+    h1 { font-size: 1.3rem; margin-top: 0; }
+    label { display: block; margin-bottom: 0.75rem; font-size: 0.9rem; }
+    input { width: 100%; padding: 0.5rem; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; margin-top: 0.25rem; }
+    button { width: 100%; background: #1f2a44; color: #fff; border: 0; padding: 0.6rem; border-radius: 4px; cursor: pointer; font-weight: 600; }
+    .error { background: #fee2e2; border: 1px solid #fca5a5; color: #991b1b; padding: 0.5rem 0.7rem; border-radius: 4px; margin-bottom: 1rem; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Aruba Voucher Admin</h1>
+    {% if error %}<div class="error">{{ error }}</div>{% endif %}
+    <form method="post" action="/admin/login/submit">
+      <label>Username
+        <input type="text" name="username" autocomplete="username" required autofocus>
+      </label>
+      <label>Password
+        <input type="password" name="password" autocomplete="current-password" required>
+      </label>
+      <button type="submit">Sign in</button>
+    </form>
+  </div>
+</body>
+</html>
